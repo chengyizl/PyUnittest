@@ -2,7 +2,7 @@ import unittest
 import os
 from HTMLTestRunner import HTMLTestRunner
 # 利用testloader加载测试用例
-from test_unittest.testTaizhou import Test
+from test_unittest.AddTaizhou import Test
 from datetime import datetime
 
 

@@ -1,7 +1,7 @@
 import logging
 import os
 from logging import handlers
-from test_unittest import testTaizhou
+from test_unittest import AddTaizhou
 
 #项目的绝对路径
 path = os.path.abspath(os.path.join(os.path.dirname(__file__),os.pardir))

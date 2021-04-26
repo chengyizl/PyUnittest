@@ -39,7 +39,7 @@ class Test(unittest.TestCase):
         self.baseurl = "http://wechat.519taizhou.com/"
         self.params_code = {"code":"071u3a000uk8kL1d6F300erlFY1u3a02"}
         self.paramActivityItem = {"activityItemId": "176"}
-        self.paramOrder = {'activityItemLimitId' : '726389'}
+        self.paramOrder = {'activityItemLimitId' : '726509'}
         self.s = requests.session()
         self.g = globals()
 
@@ -96,15 +96,17 @@ class Test(unittest.TestCase):
             self.assertEqual(res['code'],8200,'返回错误，状态不为8200')
 
     #添加儿童票
+    @unittest.skip("暂时跳过")
     def testDaddchild(self):
             global token
-            parrecordid = self.g['resid']#获取全局变量中的id
+            parrecordid = self.g['resid'] #获取全局变量中的id
             print(parrecordid)
             header = {
                          "Host":"wechat.519taizhou.com",
                          "User-Agent":"Mozilla/5.0 (Linux; Android 10; CDY-AN00 Build/HUAWEICDY-AN00; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/77.0.3865.120 MQQBrowser/6.2 TBS/045525 Mobile Safari/537.36 MMWEBID/3819 MicroMessenger/8.0.2.1860(0x2800023B) Process/tools WeChat/arm64 Weixin NetType/WIFI Language/zh_CN ABI/arm64",
                          "Origin":"http://wechat.519taizhou.com",
-                         "Content-Length":"107",
+                         "Content-Type":"application/json;charset=UTF-8",
+                         "Accept":"application/json, text/plain, */*",
                          "token": token
                      }
             data = {
@@ -112,7 +114,7 @@ class Test(unittest.TestCase):
                          "username":"蒋诗薇",
                          "parrecordid": parrecordid
                    }
-            self.req = requests.post(self.baseurl+'subscribe/record/child',headers=header,data=data)
+            self.req = requests.post(self.baseurl+'subscribe/record/child',headers=header,json=data)
             res = self.req.json()
             print(res)
             #判断返回状态
